@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calculatorApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="calculator.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#eab676; /* Light gray background */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Make the body full height of the viewport */
+        }
+
+        .calculator {
+            background-color: #ffffff; /* White background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            width: 300px;
+        }
+
+        .calculator input[type="number"],
+        .calculator select {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #cccccc; /* Light gray border */
+            border-radius: 5px;
+            font-size: 16px;
+            width: 80px;
+        }
+
+        .calculator button {
+            padding: 8px 16px;
+            background-color: #4caf50; /* Green button */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .calculator button:hover {
+            background-color: #45a049; /* Darker green button on hover */
+        }
+
+        .calculator p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body ng-controller="CalculatorController as calcCtrl">
+    <div class="calculator">
+        <input type="number" ng-model="calcCtrl.firstOperand">
+        <select ng-model="calcCtrl.operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" ng-model="calcCtrl.secondOperand">
+        <button ng-click="calcCtrl.calculate()">Calculate</button>
+        <p>Result: {{ calcCtrl.answer }}</p>
+    </div>
+</body>
+</html>
